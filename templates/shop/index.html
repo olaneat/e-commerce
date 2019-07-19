@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+<body>
+<div class="container">
+  <div class="row">
+    {% block item-list %}
+      <div class="col-md-9">
+        {% if product %}
+          <ul>
+            {% for p in product  %}
+              <li>
+                <img src="{{p.image.url}}" alt="{{p.name}}" width="100"><br>
+                <a href =  "{{ p.get_absolute_url }}">{{p.name}}</a>
+                <br><br>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p> No product available</p>
+        {% endif %}
+      </div>
+    {% endblock  %}
+    
+   {% block category-list %}
+    <div class="col-md-3">
+      <h2>Categories</h2>
+        {% if categories %}
+          <ul> 
+            {% for c in categories %}
+              <li>
+                <a href="{{c.get_absolute_url}} "> {{c.name}}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p> There's no item category yet
+        {% endif %}
+      </div>  
+    {% endblock  %}
+      
+
+      
+
+  </div>
+</div>
+
+
+
+<body>
+     

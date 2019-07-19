@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+<div class= "container">
+  <div class="row">
+    {% block item-list %}
+      <div class="col-md-12">
+        <h2 class ="text-info" align="center">{{product.name}}</h2>
+        <br> 
+      </div>
+      <br><br>
+    </div>
+    <div class='row'>
+     <div class='col-md-4'>
+       <img src="{{ product.image.url }}" hieght= 250px width =300px>
+       <br>
+
+     </div>
+     <div class ="col-md-2"></div>
+     <div class = "col-md-7">
+      <p> <strong>Brand:</strong>{{product.brand}}</p><br>
+      <p><strong>Price: </strong>{{product.price}}</p><br>
+      <p><strong>Description:</strong><br></p>
+      <p>{{ product.description | linebreaks }}</p><br><br>
+
+      <form method = 'post' action="{% url 'cart:add-to-cart'  %}" class = 'cart'>
+        {% csrf_token %}
+        {{cart_form.as_p}}
+        <br>
+        <input type = "submit" class="text-success" value = 'Add to Cart' >  
+      </form>
+
+     </div>
+   {% endblock  %}
+    
+  </div>
+  </div>
+</div>
