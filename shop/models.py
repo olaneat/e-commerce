@@ -25,12 +25,13 @@ class Product(models.Model):
     available = models.BooleanField(default= True)
     price = models.DecimalField(max_digits= 10, decimal_places=2)
     category = models.ForeignKey(Category, on_delete = 'models.CASCADE')
+    brand = models.CharField(max_length = 40)
     stock = models.IntegerField()
     image = models.ImageField(upload_to = 'media/img')
     created = models.DateField()
 
     class Meta:
-        ordering = ('created',)
+        ordering = ('-created',)
         index_together = (('id', 'slug'))
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
@@ -39,7 +40,7 @@ class Product(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("shop:product-detail", args=[self.slug, self.id])
+        return reverse("shop:product-detail", args=[self.id, self.slug])
 
 
     

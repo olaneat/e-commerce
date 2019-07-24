@@ -3,7 +3,7 @@
 
 <div class= "container">
   <div class="row">
-    {% block item-list %}
+    {% block content %}
       <div class="col-md-12">
         <h2 class ="text-info" align="center">{{product.name}}</h2>
         <br> 
@@ -23,7 +23,7 @@
       <p><strong>Description:</strong><br></p>
       <p>{{ product.description | linebreaks }}</p><br><br>
 
-      <form method = 'post' action="{% url 'cart:add-to-cart'  %}" class = 'cart'>
+      <form method = 'post' action="{% url 'cart:add-to-cart' product.id product.slug %}" class = 'cart'>
         {% csrf_token %}
         {{cart_form.as_p}}
         <br>

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Product, Category
 from django.shortcuts import get_object_or_404, reverse
 from django.http import HttpResponseRedirect
+from cart.forms import CartForm
 # Create your views here.
 
 def product_list(request, category_slug = None):
@@ -21,7 +22,8 @@ def product_detail(request, id, slug):
                                 slug =slug,
                                 id = id,
                                 available = True )
-    return render(request, 'shop/product-detail.html',
-                                 {'product': product})                
+    cart_form = CartForm()
+    context = {'product': product, 'cart_form': cart_form}
+    return render(request, 'shop/product-detail.html', context)                
 
 
