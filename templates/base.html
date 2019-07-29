@@ -22,7 +22,23 @@
 </div>
 <div id="subheader">
 	<div class="cart">
-		Your cart is empty.
+		{% with total_items=cart|length %}
+			{% if cart|length > 0 %}
+				You have:
+				{{ total_items}} item{{total_items | pluralize}},
+				<a href="{% url 'cart:cart_detail' %}">
+					in your cart
+				</a>
+				worth:
+				N{{cart.get_total_price}}
+				
+			{% else %}
+				<p>Welcome Your shopping cart is empty </p>
+			{% endif %}
+		
+		{% endwith %}
+
+
 	</div>
 </div>
 

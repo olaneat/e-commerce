@@ -19,9 +19,9 @@ def add_cart(request, product_id, slug):
 
 
 def remove_cart(request, product_id):
-        remove_item = Cart(request)
+        delete_item = Cart(request)
         product = get_object_or_404(Product, id =product_id)
-        remove_item.remove(product)
+        delete_item.remove(product)
         return redirect('cart:cart_detail')
 
 def cart_detail(request):

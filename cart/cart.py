@@ -23,7 +23,7 @@ class Cart(object):
         """
         product_ids = self.cart.keys()
         # get the product objects and add them to the cart
-        products = Product.objects.filter(id__in=product_ids)
+        products = Product.objects.filter(id__in = product_ids)
 
         cart = self.cart.copy()
         for product in products:
