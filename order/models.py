@@ -6,7 +6,8 @@ class Order(models.Model):
     first_name = models.CharField(max_length = 150)
     surname =  models.CharField(max_length = 150)
     email =  models.EmailField(blank = True)
-    address = models.TextField
+    phone_number = models.CharField(max_length = 11)
+    address = models.CharField(max_length= 500)
     city = models.CharField(max_length = 150)
     paid = models.BooleanField(default= False)
     created = models.DateTimeField()
