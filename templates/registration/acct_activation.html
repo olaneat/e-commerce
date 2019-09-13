@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% autoescape %}
+    Hi {% user.username %}
+    please click here yo activate your account
+    
+    http://{{domain}}{% url 'activate', uuidb64=uid token=token  %}
+  {% endautoescape %}
+
+{% content %}
